@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Converter</title>
+    <script src="timeConverter.js"></script>
+    <style>
+        label, input {
+            display: inline-block;
+            width: 5em;
+        }
+
+        label {
+            text-align: right;
+        }
+    </style>
+</head>
+<body onload="attachEventsListeners()">
+<h1>Time Converter</h1>
+<div>
+    <label for="days">Days: </label>
+    <input type="text" id="days">
+    <input id="daysBtn" type="button" value="Convert">
+</div>
+<div>
+    <label for="hours">Hours: </label>
+    <input type="text" id="hours">
+    <input id="hoursBtn" type="button" value="Convert">
+</div>
+<div>
+    <label for="minutes">Minutes: </label>
+    <input type="text" id="minutes">
+    <input id="minutesBtn" type="button" value="Convert">
+</div>
+<div>
+    <label for="seconds">Seconds: </label>
+    <input type="text" id="seconds">
+    <input id="secondsBtn" type="button" value="Convert">
+</div>
+<script>
+    function attachEventsListeners() {
+        let day = document.getElementById('days')
+        let hour = document.getElementById('hours')
+        let minute = document.getElementById('minutes')
+        let seconds = document.getElementById('seconds')
+
+        document.getElementById('daysBtn').addEventListener('click', fromDtoSeconds)
+        document.getElementById('hoursBtn').addEventListener('click', fromHtoSeconds)
+        document.getElementById('minutesBtn').addEventListener('click', fromMtoSeconds)
+        document.getElementById('secondsBtn').addEventListener('click', fromStoSeconds)
+
+        function fromDtoSeconds() {
+            seconds = (day.value * 86400)
+            document.getElementById('seconds').value = Number(seconds)
+
+            hour = (day.value * 24)
+            document.getElementById('hours').value = Number(hour)
+            minute = ((day.value * 1440))
+            document.getElementById('minutes').value = Number(minute)
+        }
+
+        function fromHtoSeconds() {
+            day = (hour.value / 24)
+            document.getElementById('days').value = Number(day)
+            minute = (hour.value * 60)
+            document.getElementById('minutes').value = Number(minute)
+            seconds = (hour.value * 3600)
+            document.getElementById('seconds').value = Number(seconds)
+        }
+
+        function fromMtoSeconds() {
+            seconds = (minute.value * 60)
+            document.getElementById('seconds').value = Number(seconds)
+            hour = (minute.value / 60)
+            document.getElementById('hours').value = Number(hour)
+            day = (hour / 24)
+            document.getElementById('days').value = Number(day)
+        }
+
+        function fromStoSeconds() {
+            minute =(seconds.value / 60)
+            document.getElementById('minutes').value = Number(minute)
+            hour = (minute / 60)
+            document.getElementById('hours').value = Number(hour)
+            day = (hour/24)
+            document.getElementById('days').value = Number(day)
+        }
+    }
+
+</script>
+</body>
+</html>
