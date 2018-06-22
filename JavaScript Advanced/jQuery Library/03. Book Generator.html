@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Generator</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+</div>
+<script src="book-generator.js"></script>
+<script>
+    window.onload = function () {
+        createBook("#wrapper", "A man called Ove", "Fredrik Backman", 1337);
+        createBook("#wrapper", "A man called Ove", "Fredrik Backman", 1337);
+    }
+        function createBook(comDiv, title, author, isbn) {
+            let num = 1
+            let div = $(`<div>`)
+            div.attr('id', `book${num}`)
+
+            let tit = $(`<p class='title'>${title}</p>`)
+            let aut = $(`<p class="author">${author}</p>`)
+            let id = $(`<p class="isbn">${isbn}</p>`)
+
+            tit.appendTo(div)
+            aut.appendTo(div)
+            id.appendTo(div)
+            let select = $('<button>')
+                .text('Select')
+            select.appendTo(div)
+            let deselect = $('<button>')
+                .text('Deselect')
+            deselect.appendTo(div)
+            div.appendTo(comDiv);
+
+            select.click(() => {
+                div.attr('style', 'border: 2px solid blue')
+
+            })
+
+            deselect.click(() => {
+                div.attr('style', 'border: none')
+            })
+
+        }
+
+</script>
+</body>
+</html>

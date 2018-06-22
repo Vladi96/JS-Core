@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Increment Counter</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+<div id="wrapper">
+</div>
+<script src="incrementCounter.js"></script>
+<script>
+    window.onload = function(){
+        increment("#wrapper");
+    }
+    function increment() {
+        let number = 0;
+        let textArea = $(`<textarea class="counter" disabled placeholder=${number}>`)
+        let increment = $('<button class="btn" id="incrementBtn">Increment</button>')
+        let add = $('<button class="btn" id="addBtn">Add</button>')
+        textArea.appendTo('body')
+        increment.appendTo('body')
+        add.appendTo('body')
+        let ull = $('<ul class="result">')
+        ull.appendTo('body')
+        $('#incrementBtn').click(()=>{
+            textArea.val(number+=1)
+        })
+        $('#addBtn').click(()=>{
+            let lii = $(`<li>${number}</li>`)
+            lii.appendTo('.result')
+        })
+    }
+</script>
+</body>
+</html>
