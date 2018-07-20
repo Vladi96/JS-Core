@@ -1,36 +1,34 @@
-class Stringer {
-    constructor(innerString, innerLength) {
-        this.innerString = innerString
+class Stringer{
+    constructor(innerString,innerLength ){
+        this.innerString=innerString
         this.innerLength = innerLength
     }
-
-    toString() {
-        if (this.innerString.length <= this.innerLength) {
-            return this.innerString
-        }
-        return this.innerString.substring(0, this.innerLength) + '...'
-    }
-
-    get innerLength() {
+    get innerLength(){
         return this._innerLength
     }
-
-    set innerLength(num) {
-        if (num < 0) {
+    set innerLength(value){
+        if(value<0){
             this._innerLength = 0
         }
         else {
-            this._innerLength = num
+            this._innerLength =value
         }
     }
-
-    increase(number) {
-        this.innerLength += number
+    toString(){
+        if(this.innerLength>=this.innerString.length){
+            return `${this.innerString}`
+        }
+        else {
+            return `${this.innerString.substring(0,this.innerLength)}...`
+        }
+    }
+    increase(val){
+        return this.innerLength+=val
+    }
+    decrease(val){
+        return this.innerLength-=val
     }
 
-    decrease(number) {
-        this.innerLength -= number
-    }
 }
 
 let test = new Stringer("Test", 5);
