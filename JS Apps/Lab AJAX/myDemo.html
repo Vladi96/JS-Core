@@ -25,18 +25,18 @@ GitHub username:
             method: "GET",
             success: display,
             error: (el) => {
-                $('#repos').text('Error')
+                $('#repos').empty().append($('<li>').text('Error'))
             }
         }
-        let output = $('#repos')
         $.ajax(repo)
-
+        let output = $('#repos')
         function display(repos) {
             output.empty()
             for (let repo of repos) {
-             $('<li>').append($(`<a href= ${repo.html_url}>${repo.full_name}</a>`)).appendTo(output)
+                $('<li>').append($(`<a>`).text(repo.full_name).attr('href', repo.html_url)).appendTo(output)
             }
         }
     }
+
 </script>
 </body>
